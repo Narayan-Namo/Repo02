@@ -7,25 +7,34 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies
-          command: echo "Installing dependencies..."
-      - run:
           name: Build Project
           command: echo "Building project files..."
 
-  test-job:
+  test-job-1:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - run:
-          name: Run Tests
-          command: exit 1
+          name: Run Unit Tests
+          command: echo "Running unit tests... ✅"
+
+  test-job-2:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Run Integration Tests
+          command: echo "Running integration tests... ✅"
 
 workflows:
-  build-test-workflow:
+  build-and-parallel-tests:
     jobs:
       - build-job
-      - test-job:
+      - test-job-1:
+          requires:
+            - build-job
+      - test-job-2:
           requires:
             - build-job

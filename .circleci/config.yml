@@ -8,7 +8,7 @@ jobs:
       - checkout                 # Step 1: Pulls code from GitHub
       - run:
           name: Say Hello        # Step 2: Simple echo command
-          command: echo "Hello CircleCI! Your pipeline is working."
+          - command: echo "Hello CircleCI! Your pipeline is working."
 
 workflows:
   hello-workflow:        # Workflow = order of jobs

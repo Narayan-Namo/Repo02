@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: Run Tests
-          command: echo "Running tests... All tests passed!"
+          command: exit 1
 
 workflows:
   build-test-workflow:

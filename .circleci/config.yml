@@ -1,16 +1,16 @@
 version: 2.1
 
 jobs:
-  hello-job:            # A job is a single unit of work
+  hello-job:
     docker:
-      - image: cimg/base:stable   # CircleCI base Linux image
+      - image: cimg/base:stable
     steps:
-      - checkout                 # Step 1: Pulls code from GitHub
+      - checkout
       - run:
-          name: Say Hello        # Step 2: Simple echo command
-          - command: echo "Hello CircleCI! Your pipeline is working."
+          name: Say Hello
+          command: echo "Hello CircleCI! Your pipeline is working."
 
 workflows:
-  hello-workflow:        # Workflow = order of jobs
+  hello-workflow:
     jobs:
       - hello-job
